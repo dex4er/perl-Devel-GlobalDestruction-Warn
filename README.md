@@ -1,0 +1,54 @@
+# NAME
+
+Devel::GlobalDestruction::Warn - Warn if object is at global destruction
+
+# SYNOPSIS
+
+    package Foo;
+    use Devel::GlobalDestruction::Warn;
+
+From command line:
+
+    $ perl -MDevel::GlobalDestruction::Warn leak.pl
+
+# DESCRIPTION
+
+Global destruction means that you didn't freed the resources previously. It
+might be a sight of memory leaking so it is very useful to warn if any
+destructor was called at global destruction.
+
+# ENVIRONMENT
+
+If the `PERL_DEVEL_GLOBALDESTRUCTION_WARN_VERBOSE` or `PERL_DGW_VERBOSE`
+variable is true value, the full stack trace will be outputed.
+
+# SEE ALSO
+
+Similar tools which detects memory leaks:
+
+[Devel::Leak::Object](http://search.cpan.org/perldoc?Devel::Leak::Object), [Devel::LeakGuard::Object](http://search.cpan.org/perldoc?Devel::LeakGuard::Object).
+
+Some tools which help to prevent memory leaks:
+
+[Resource::Dispose](http://search.cpan.org/perldoc?Resource::Dispose), [Object::Destroyer](http://search.cpan.org/perldoc?Object::Destroyer).
+
+# BUGS
+
+If you find the bug or want to implement new features, please report it at
+[https://github.com/dex4er/perl-Devel-GlobalDestruction-Warn/issues](https://github.com/dex4er/perl-Devel-GlobalDestruction-Warn/issues)
+
+The code repository is available at
+[http://github.com/dex4er/perl-Devel-GlobalDestruction-Warn](http://github.com/dex4er/perl-Devel-GlobalDestruction-Warn)
+
+# AUTHOR
+
+Piotr Roszatycki <dexter@cpan.org>
+
+# LICENSE
+
+Copyright (c) 2012 Piotr Roszatycki <dexter@cpan.org>.
+
+This is free software; you can redistribute it and/or modify it under
+the same terms as perl itself.
+
+See [http://dev.perl.org/licenses/artistic.html](http://dev.perl.org/licenses/artistic.html)
