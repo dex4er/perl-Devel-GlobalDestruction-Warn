@@ -40,12 +40,14 @@ use namespace::functions;
 # Mouse::XS doesn't use bless
 $ENV{MOUSE_PUREPERL} = 1;
 
+# Well known modules which construct objects
 $Carp::CarpInternal{$_} = 1 foreach (__PACKAGE__, qw(
     Mouse::Meta::Method::Constructor Mouse::Meta::Class Mouse::Object
     Class::MOP::Class Class::MOP::Instance
     Moose::Meta::Class Moose::Object
 ) );
 
+# Well known modules which don't clean up theirs resources
 our %Excludes = map { $_ => 1 } qw(
     Any
     AnyEvent::Log::Ctx
@@ -62,10 +64,17 @@ our %Excludes = map { $_ => 1 } qw(
     DateTime::Infinite::Future DateTime::Infinite::Past
     DateTime::Locale::en_US
     DateTime::TimeZone::Floating
+    DBI::var
     Defined
     Encode::utf8
     Errno
-    FileHandle GlobRef HashRef Int Item Maybe
+    FileHandle GlobRef HashRef Int Item
+    Log::Log4perl::Appender Log::Log4perl::Appender::String
+    Log::Log4perl::Layout::PatternLayout
+    Log::Log4perl::Util::TimeTracker
+    Log::Report::Translator Log::Report::Translator::POT
+    Log::Report::Dispatcher::Perl Log::Report::Lexicon::Index
+    Maybe
     Moose::Meta::Attribute Moose::Meta::Class Moose::Meta::Instance
     Moose::Meta::Method::Accessor Moose::Meta::Method::Meta
     Moose::Meta::TypeConstraint Moose::Meta::TypeConstraint::Class
@@ -76,6 +85,7 @@ our %Excludes = map { $_ => 1 } qw(
     Mouse::Object Mouse::PurePerl
     Num Object Ref RegexpRef RoleName ScalarRef Str Undef
     POSIX::SigRt
+    JSON::PP::Boolean
     utf8
     Value
 );
